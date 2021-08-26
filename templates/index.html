@@ -1,0 +1,35 @@
+{% extends 'base_nav_layout.html' %}
+
+{% load static %}
+
+{% block content %}
+
+    <div class="container">
+
+        <h1>My Recipes</h1>
+        {% if recipes %}
+            <div class="items-container">
+                {% for recipe in recipes %}
+                    <div class="item">
+                        <h2>{{ recipe.title }}</h2>
+                        <img class="detail-img" src="{{ recipe.image_url }}" alt="recipe-image">
+                        <div class="index-options">
+                            <div class="time">
+                            <img src="{% static 'images/clock.png' %}">
+                            <p>{{ recipe.time }} min</p>
+                        </div>
+                        <div class="buttons-container">
+                            <a class="button detail" href="{% url 'details recipe' recipe.id %}">Details</a>
+                            <a class="button edit" href="{% url 'edit recipe' recipe.id %}">Edit</a>
+                            <a class="button delete" href="{% url 'delete recipe' recipe.id %}">Delete</a>
+                        </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <h2>There are no recipes.</h2>
+        {% endif %}
+    </div>
+
+{% endblock %}

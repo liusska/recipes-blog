@@ -1,0 +1,37 @@
+{% extends 'base_nav_layout.html' %}
+
+
+{% block content %}
+
+    <div class="container">
+        
+<h1>Edit Recipe</h1>
+<div class="items-container">
+    <div class="item">
+        <form method="POST" action="{% url 'edit recipe' recipe.id %}">
+
+            <label for="title">Title</label>
+            {{ form.title }}
+
+            <label for="imageURL">Image URL</label>
+            {{ form.image_url }}
+
+            <label for="description">Description</label>
+            {{ form.description }}
+
+            <label for="ingredients">Ingredients</label>
+            {{ form.ingredients }}
+
+            <label for="time">Time (Minutes)</label>
+            {{ form.time }}
+
+            <input type="submit" class="button edit" value="Edit">
+            {% csrf_token %}
+        </form>
+    </div>
+</div>
+
+    </div>
+
+
+{% endblock %}
